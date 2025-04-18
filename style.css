@@ -1,4 +1,4 @@
- body {
+  body {
         font-family: 'Courier New', monospace;
             
             margin: 0;
@@ -65,11 +65,12 @@
 
         input,
         select {
-            width: 40%;
+            width: 100%;
             padding: 8px 10px;
             border: 1px solid #ccc;
             border-radius: 6px;
             font-size: 16px;
+            box-sizing: border-box;
         }
 
         button {
@@ -166,16 +167,21 @@
 
 
         .delete-btn {
-            background: #ff4d4d;
-            color: white;
-            border: none;
-            padding: 6px 10px;
-            font-size: 16px;
-            border-radius: 50%;
-            cursor: pointer;
-            float: right;
-            transition: background 0.2s ease;
-        }
+          background: #ff4d4d;
+          color: white;
+          border: none;
+          width: 36px;
+          height: 36px;
+          font-size: 16px;
+          border-radius: 50%;
+          cursor: pointer;
+          float: right;
+          transition: background 0.2s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      
 
         .delete-btn:hover {
             background: #cc0000;
@@ -447,7 +453,7 @@
             margin-bottom: 16px;
           }
           
-           #testContainer {
+          #testContainer {
              
             gap: 10px;
             justify-content: center;
@@ -471,3 +477,46 @@
             flex-wrap: wrap; /* wrap items if they're too wide */
             word-break: break-word;
           }
+
+          @media (max-width: 768px) {
+            .lastcontainer {
+              grid-template-columns: 1fr;
+            }
+          
+            .column {
+              padding: 10px;
+              border: none;
+            }
+          
+            .form-group, .form-group1 {
+              margin: 10px 0;
+            }
+          
+            .column1 {
+              flex-direction: column;
+            }
+          
+            #checkboxContainer label,
+            #testContainer label {
+              width: 100%; /* Full width for mobile */
+              box-sizing: border-box;
+            }
+          
+            .checkbox-grid {
+              grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+          
+            .styled-table {
+              width: 100%;
+            }
+          
+            button {
+              width: 100%;
+              margin-bottom: 10px;
+            }
+          
+            .row {
+              flex-direction: column;
+            }
+          }
+          
