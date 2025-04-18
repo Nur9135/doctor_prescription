@@ -447,14 +447,27 @@
             margin-bottom: 16px;
           }
           
-          #testContainer {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 5 columns */
-            gap: 10px; /* spacing between items */
+           #testContainer {
+             
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            
           }
-          
+          #testContainer label {
+            width: calc(70% - 12px);
+            /* Divide by 4 columns, accounting for gap */
+            display: flex;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            background-color: #f8f8f8;
+            align-items: center;
+            justify-content: flex-start;
+        }
           #testContainer div {
             display: flex;
             align-items: center;
-            gap: 5px; /* spacing between checkbox and label */
+            gap: 5px;
+            flex-wrap: wrap; /* wrap items if they're too wide */
+            word-break: break-word;
           }
