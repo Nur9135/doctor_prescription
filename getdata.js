@@ -390,32 +390,29 @@ export function updateMedicineList() {
   }
 
   listDiv.innerHTML = `
-<h3 class="med-heading">Medicines Added</h3>
-<hr>
-<ul class="medicine-list">
-${selectedMedicines
-      .map(
-        (m, index) =>
-
-          `
-  <li class="medicine-item">
-    <div>
-       
-      <span class="pill-detail">  ${m.name} (${m.composition})  - ${m.dosage} for ${m.days} days</span>
-    </div>
-    <button class="delete-btn" onclick="removeMedicine(${index})">×</button>
-  </li>
-`
-      )
-      .join("")}
-</ul>
-`;
-
+    <h3 class="med-heading">Medicines Added</h3>
+    <hr>
+    <ul class="medicine-list">
+      ${selectedMedicines
+        .map(
+          (m, index) => `
+        <li class="medicine-item">
+          <div>
+            <span class="pill-detail">${m.name} (${m.composition}) - ${m.dosage} for ${m.days} days</span>
+          </div>
+          <button class="delete-btn" onclick="removeMedicine(${index})">×</button>
+        </li>`
+        )
+        .join("")}
+    </ul>
+  `;
 }
 
-export function removeMedicine(index) {
-  selectedMedicines.splice(index, 1); // remove medicine at that index
-  updateMedicineList(); // refresh the list
-}
+// ✅ Move this function to global scope so it’s accessible from inline onclick
+window.removeMedicine = function(index) {
+  selectedMedicines.splice(index, 1);
+  updateMedicineList();
+};
+
 
 export const selectedDiseasesGlobal = new Set(); // ⬅️ stores checked diseases across categories
