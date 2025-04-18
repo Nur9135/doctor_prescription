@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Medical Data Viewer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #fce4ec);
+      padding: 40px;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+    }
+
+    h1 {
+      text-align: center;
+      color: #00796b;
+      margin-bottom: 30px;
+    }
+
+    form {
+      background-color: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      width: 100%;
+      max-width: 500px;
+      box-sizing: border-box;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #880e4f;
+    }
+
+    label {
+      display: block;
+      margin-top: 5px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      box-sizing: border-box;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus {
+      border-color: #26a69a;
+      outline: none;
+    }
+
+    button {
+      background-color: #26a69a;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 10px;
+       margin-left: 90px;
+    }
+
+    button:hover {
+      background-color: #00796b;
+    }
+
+    @media (max-width: 600px) {
+      form {
+        padding: 20px;
+      }
+    }
+
+    select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: border 0.3s, box-shadow 0.3s;
+  }
+  </style>
+</head>
+<body>
+
+  
+
+    <div class="addmedicine">
+        <h1>Add Medicine</h1>
+        <form id="addMedicineForm">
+          <h2>New Entry</h2>
+          <label for="categoryFilter">System:</label>
+          <select id="categoryFilter" required>
+            <option value="">-- Select Category --</option>
+            <option value="Brain/Nervous">Brain/Nervous</option>
+            <option value="Heart/Cardiovascular">Heart/Cardiovascular</option>
+            <option value="Lungs/Respiratory">Lungs/Respiratory</option>
+            <option value="Liver">Liver</option>
+            <option value="Kidney">Kidney</option>
+            <option value="Blood">Blood</option>
+            <option value="Bones/Joints">Bones/Joints</option>
+            <option value="Skin">Skin</option>
+            <option value="Eyes">Eyes</option>
+            <option value="Digestive">Digestive</option>
+            <option value="Endocrine/Metabolic">Endocrine/Metabolic</option>
+            <option value="Reproductive">Reproductive</option>
+            <option value="General/Infectious">General/Infectious</option>
+            <option value="Others">Others</option>
+          </select>
+          
+          <label>Disease:
+            <input type="text" id="diseaseInput" placeholder="e.g., Alzheimer's Disease" required>
+          </label>
+          <label>Name:
+            <input type="text" id="nameInput" placeholder="e.g., Donepezil" required>
+          </label>
+          <label>Composition:
+            <input type="text" id="compositionInput" placeholder="e.g., Donepezil 10mg" required>
+          </label>
+          <label>Type:
+            <select id="typeInput" required>
+              <option value="">-- Select Type --</option>
+              <option value="Tab">Tablet</option>
+              <option value="Syr">Syrup</option>
+              <option value="Inj">Injection</option>
+              <option value="Cap">Capsule</option>
+              <option value="Oint">Ointment</option>
+              <option value="Drops">Drops</option>
+              <option value="Inhaler">Inhaler</option>
+              <option value="Cre">Cream</option>
+              <option value="Gel">Gel</option>
+            </select>
+          </label>
+          
+          <button type="submit">Add Medicine</button>
+        </form>
+      </div>
+
+  <script type="module">
+    // Import necessary functions from Firebase SDK
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+  
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyA8-09yv6Y4GoJsRGjFVa8L8iyOV8oFA7o",
+      authDomain: "doctor-prescription-09135.firebaseapp.com",
+      databaseURL: "https://doctor-prescription-09135-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "doctor-prescription-09135",
+      storageBucket: "doctor-prescription-09135.firebasestorage.app",
+      messagingSenderId: "404658459529",
+      appId: "1:404658459529:web:30be5567bf9a90dc41c758"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+  
+    // Initialize Firestore
+    const db = getFirestore(app);
+  
+    // Function to add new medicine to Firestore
+    async function addMedicine() {
+      const system = document.getElementById("categoryFilter").value.trim();
+      const disease = document.getElementById("diseaseInput").value.trim();
+      const name = document.getElementById("nameInput").value.trim();
+      const composition = document.getElementById("compositionInput").value.trim();
+      const cat = document.getElementById("typeInput").value.trim();
+
+  
+      const newMedicine = { name, composition, cat };
+  
+      // Add medicine to Firestore under a collection named "medicines"
+      try {
+        // Reference to the system and disease in Firestore
+        const docRef = await addDoc(collection(db, "medicines", system, disease), newMedicine);
+        console.log("Medicine added with ID: ", docRef.id);
+        document.getElementById("nameInput").value = "";
+        document.getElementById("compositionInput").value = "";
+        document.getElementById("typeInput").value = "";
+      } catch (e) {
+        console.error("Error adding medicine: ", e);
+        alert("error")
+      }
+    }
+  
+    // Function to get all medicines from Firestore
+    async function getMedicines() {
+      try {
+        const querySnapshot = await getDocs(collection(db, "symptoms"));
+        querySnapshot.forEach((doc) => {
+          console.log(doc.id, " => ", doc.data());
+
+        });
+      } catch (e) {
+        console.error("Error getting medicines: ", e);
+      }
+    }
+    getMedicines()
+    // Event listener for form submission to add a new medicine
+    document.getElementById("addMedicineForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      addMedicine();
+      
+    });
+  
+    // You can call getMedicines to fetch data as needed
+    // getMedicines();
+  </script>
+  
+  
+  
+
+</body>
+</html>

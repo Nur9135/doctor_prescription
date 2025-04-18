@@ -1,0 +1,460 @@
+ body {
+        font-family: 'Courier New', monospace;
+            
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 90%;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2,
+        h3 {
+            text-align: center;
+            color: #2a4d69;
+        }
+
+        /* General Form Styling */
+        .form-group {
+            margin: 10px 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        /* Label Styling */
+        .form-group label {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+            color: #555;
+        }
+
+
+        /* Hover and Focus Effects */
+        select:hover {
+            border-color: #66b3ff;
+        }
+
+        select:focus {
+            border-color: #0056b3;
+            box-shadow: 0 0 10px rgba(0, 86, 179, 0.3);
+            outline: none;
+        }
+
+        /* Placeholder Option Styling */
+        select option {
+            font-size: 16px;
+            color: #888;
+        }
+
+
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input,
+        select {
+            width: 40%;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 15px;
+            margin-top: 10px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            background-color: #2a9d8f;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #21867a;
+        }
+
+        .medicine-list {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+
+        .prescription-preview {
+            margin-top: 25px;
+            padding: 20px;
+            border: 1px dashed #aaa;
+            background-color: #fffefc;
+            border-radius: 10px;
+        }
+
+        .prescription-preview ul {
+            padding-left: 20px;
+        }
+
+        .prescription-preview p {
+            font-size: 17px;
+            margin-bottom: 10px;
+        }
+
+
+        .form-group {
+            margin: 20px;
+        }
+
+        .checkbox-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .category {
+            width: 250px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .category-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .diseases {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .diseases label {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Make the checkboxes and their labels appear on the same line */
+        label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            /* Adds space between checkbox and text */
+            margin-right: 20px;
+            /* Optional: Adds space between the checkboxes */
+        }
+
+        input[type="checkbox"] {
+            margin: 0;
+            /* Remove default margin from checkboxes */
+            width: 10%;
+        }
+
+
+        .delete-btn {
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            font-size: 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            float: right;
+            transition: background 0.2s ease;
+        }
+
+        .delete-btn:hover {
+            background: #cc0000;
+        }
+
+        .medicine-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Container for the preview */
+        .preview-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling for each preview item (name, age, diagnosis) */
+        .preview-item {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .preview-item strong {
+            color: #007BFF;
+            font-weight: 600;
+        }
+
+        /* Styling for diagnosis section */
+        #prevDiagnosis {
+            font-style: italic;
+            color: #777;
+        }
+
+        /* Styling for the medicines list */
+        .medicines-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .medicines-list li {
+            font-size: 16px;
+            margin-bottom: 10px;
+            padding: 5px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .medicines-list li:hover {
+            background-color: #e7e7e7;
+        }
+
+        .medicines-list li span {
+            color: #555;
+        }
+
+        /* Highlighted text when no data is available */
+        #prevName,
+        #prevAge {
+            color: #888;
+            font-style: italic;
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            /* Responsive grid */
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .checkbox-grid label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #f8f8f8;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            white-space: nowrap;
+            /* Prevents wrapping inside label */
+        }
+
+        /* Checkbox container */
+        #checkboxContainer   {
+            display: flex;
+            flex-wrap: wrap;
+            /* Allows wrapping of items */
+            gap: 12px;
+            /* Spacing between items */
+            align-items: center;
+            justify-content: center;
+            /* Center the container */
+        }
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 8px;
+          }
+          .checkbox-grid label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+          }
+        /* Each checkbox item */
+        #checkboxContainer label {
+            width: calc(20% - 12px);
+            /* Divide by 4 columns, accounting for gap */
+            display: flex;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            background-color: #f8f8f8;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .symptomContainer {
+            display: flex;
+            justify-content: center;
+            /* Center horizontally */
+            align-items: center;
+            /* Center vertically */
+            /* Make sure the container takes full height */
+        }
+
+        .lastcontainer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* Create two equal columns */
+            gap: 20px;
+            /* Space between columns */
+        }
+
+        .column {
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f8f8f8;
+        }
+    
+         
+          
+         
+          
+          .column1{
+            align-items: center;
+            justify-content: center;
+            display: flex;
+          }
+
+          .form-group1{
+            width: 90%;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+          }
+          
+
+          
+          
+    
+           
+          
+          .prescription-container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            font-weight: bold;
+            border-radius: 10px;
+           
+          }
+          
+          .row {
+            display: flex;
+            gap: 10px;
+             
+            
+          }
+
+          .row1{
+            flex-wrap: wrap;
+           align-items: center;
+           justify-content: center;
+          }
+
+          .inline-pair {
+            display: flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+            margin: 0 !important;
+            padding: 10px !important;
+          }
+          
+          .inline-pair p {
+            margin: 0 !important;
+            padding: 0 !important;
+            display: inline !important;
+          }
+          
+          
+          .row-3-cols .col:first-child {
+            flex: 1 1 60%;
+          }
+          
+          .row-3-cols .col:nth-child(2),
+          .row-3-cols .col:nth-child(3) {
+            flex: 1 1 20%;
+          }
+          
+          .row-2-cols .col {
+            flex: 1 1 48%;
+          }
+          
+          .col {
+            
+            padding: 15px;
+            border-radius: 8px;
+          }
+          
+          h3 {
+            margin-top: 0;
+            color: #333;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+            align-items: center;
+          }
+          
+          .styled-list {
+            list-style: circle inside;
+            margin: 0;
+            padding: 0;
+          }
+          
+          .styled-list li {
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+          }
+          
+          .styled-table {
+            width: 90%;
+            border-collapse: collapse;
+            justify-content: center;
+            align-items: center;
+          }
+          
+          .styled-table th,
+          .styled-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+
+          }
+          
+          .styled-table th {
+            background-color: #d9e6f2;
+          }
+          
+          .section-block {
+            margin-bottom: 16px;
+          }
+          
+          #testContainer {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 5 columns */
+            gap: 10px; /* spacing between items */
+          }
+          
+          #testContainer div {
+            display: flex;
+            align-items: center;
+            gap: 5px; /* spacing between checkbox and label */
+          }
